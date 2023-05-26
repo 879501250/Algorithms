@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 /**
  * 哈希表
+ * <br>
  * 散列表（Hash table，也叫哈希表），是根据关键码值(Key value)而直接进行访问的数据结构。也就是说，它通
  * 过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做散列函数，存放记录的数组
  * 叫做散列表。
@@ -12,15 +13,18 @@ import java.util.Scanner;
 public class HashTabDemo {
     /**
      * Google 上机题
+     * <br>
      * 1) 看一个实际需求，google 公司的一个上机题:
+     * <br>
      * 2) 有一个公司,当有新的员工来报道时,要求将该员工的信息加入(id,性别,年龄,住址..),
      * 当输入该员工的 id 时,要求查找到该员工的 所有信息.
+     * <br>
      * 3) 要求: 不使用数据库,尽量节省内存,速度越快越好=>哈希表(散列)
      */
     public static void main(String[] args) {
-        //创建哈希表
+        // 创建哈希表
         EmpHashTable hashTab = new EmpHashTable(7);
-        //写一个简单的菜单
+        // 写一个简单的菜单
         String key = "";
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -35,7 +39,7 @@ public class HashTabDemo {
                     int id = scanner.nextInt();
                     System.out.println("输入名字");
                     String name = scanner.next();
-                    //创建 雇员
+                    // 创建 雇员
                     Employee emp = new Employee(id, name);
                     hashTab.addEmp(emp);
                     break;
@@ -60,7 +64,7 @@ public class HashTabDemo {
 // 创建哈希表
 class EmpHashTable {
     private EmpLinkedList[] empLinkedListArray; // 哈希表实质是一个数组
-    private int size; //表示有多少条链表
+    private int size; // 表示有多少条链表
 
     public EmpHashTable(int size) {
         this.size = size;
@@ -72,7 +76,7 @@ class EmpHashTable {
             this.empLinkedListArray[i] = new EmpLinkedList();
     }
 
-    //编写散列函数, 使用一个简单取模法
+    // 编写散列函数, 使用一个简单取模法
     public int hashFun(int no) {
         return no % size;
     }

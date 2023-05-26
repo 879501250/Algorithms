@@ -16,20 +16,21 @@ public class BinarySearch {
 
     /**
      * 二分查找算法（非递归法）
-     * @param arr 查询的数组
+     *
+     * @param arr     查询的数组
      * @param left    左边的索引
      * @param right   右边的索引
      * @param findVal 要查询的数据
      */
-    public static void BinarySearchNoRecur(int[] arr,int left, int right,int findVal){
-        if(arr[0]<=findVal&&arr[arr.length-1]>=findVal){
-            int mid=(left+right)/2;
-            while (arr[mid]!=findVal){
-                if(arr[mid]>findVal)
-                    right=mid-1;
+    public static void BinarySearchNoRecur(int[] arr, int left, int right, int findVal) {
+        if (arr[0] <= findVal && arr[arr.length - 1] >= findVal) {
+            int mid = (left + right) / 2;
+            while (arr[mid] != findVal) {
+                if (arr[mid] > findVal)
+                    right = mid - 1;
                 else
-                    left=mid+1;
-                mid=(left+right)/2;
+                    left = mid + 1;
+                mid = (left + right) / 2;
             }
             // 如果找到了，查看左右是否存在重复的数据
             List<Integer> list = new ArrayList<>();
@@ -51,12 +52,13 @@ public class BinarySearch {
                     break;
             }
             System.out.println("该数据的下标位置为" + list.toString());
-        }else
+        } else
             System.out.println("该数组不存在此数据~");
     }
 
     /**
      * 二分查找算法（递归法）
+     *
      * @param arr     数组
      * @param left    左边的索引
      * @param right   右边的索引

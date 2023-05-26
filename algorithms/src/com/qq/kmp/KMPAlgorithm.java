@@ -4,12 +4,16 @@ import java.util.Arrays;
 
 /**
  * ========== KMP 算法介绍==========
+ * <br>
  * 1) KMP 是一个解决模式串在文本串是否出现过，如果出现过，最早出现的位置的经典算法
+ * <br>
  * 2) Knuth-Morris-Pratt 字符串查找算法，简称为 “KMP 算法”，常用于在一个文本串 S 内
  * 查找一个模式串 P 的出现位置，这个算法由 Donald Knuth、Vaughan Pratt、James H. Morris
  * 三人于 1977 年联合发表，故取这 3 人的姓氏命名此算法.
+ * <br>
  * 3) KMP 方法算法就利用之前判断过信息，通过一个 next 数组，保存模式串中前后最长公共子序列的长度，
  * 每次回溯时，通过 next 数组找到，前面匹配过的位置，省去了大量的计算时间
+ * <br>
  * 4) 参考资料：https://www.cnblogs.com/ZuoAndFutureGirl/p/9028287.html
  */
 public class KMPAlgorithm {
@@ -17,7 +21,7 @@ public class KMPAlgorithm {
         // TODO Auto-generated method stub
         String str1 = "BBC ABCDAB ABCDABCDABDE";
         String str2 = "ABCDABCD";
-        //String str2 = "BBC";
+        // String str2 = "BBC";
         int[] next = kmpNext("ABCDABCD"); //[0, 1, 2, 0]
         System.out.println("next=" + Arrays.toString(next));
         int index = kmpSearch(str1, str2, next);
@@ -73,7 +77,7 @@ public class KMPAlgorithm {
         return -1;
     }
 
-    //获取到一个字符串(子串) 的部分匹配值表
+    // 获取到一个字符串(子串) 的部分匹配值表
     public static int[] kmpNext(String dest) {
         // 将字符串转化为字符数组
         char[] chars = dest.toCharArray();
@@ -132,9 +136,9 @@ public class KMPAlgorithm {
          * 优化上述过程
          */
         while (i < dest.length()) {
-            //当 dest.charAt(i) != dest.charAt(k) ，我们需要从 next[k-1]获取新的 j
-            //直到我们发现 有 dest.charAt(i) == dest.charAt(k)成立才退出
-            //这时 kmp 算法的核心点
+            // 当 dest.charAt(i) != dest.charAt(k) ，我们需要从 next[k-1]获取新的 j
+            // 直到我们发现 有 dest.charAt(i) == dest.charAt(k)成立才退出
+            // 这时 kmp 算法的核心点
             while (k > 0 && dest.charAt(i) != dest.charAt(k)) {
                 k = next[k - 1];
             }

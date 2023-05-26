@@ -14,7 +14,7 @@ public class a {
                 SimpleDateFormat sdf = new SimpleDateFormat();
                 sdf.applyPattern("HH:mm:ss");
                 Date date;
-                while (true){
+                while (true) {
                     date = new Date();
                     System.out.println(sdf.format(date));
                     try {

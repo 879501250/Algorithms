@@ -2,14 +2,20 @@ package com.qq.tree;
 
 /**
  * 使用数组
+ * <br>
  * 数组未排序， 优点：直接在数组尾添加，速度快。 缺点：查找速度慢. [示意图]
+ * <br>
  * 数组排序，优点：可以使用二分查找，查找速度快，缺点：为了保证数组有序，在添加新数据时，找到插入位
  * 置后，后面的数据需整体移动，速度慢。[示意图]
+ * <br>
  * 使用链式存储-链表
  * 不管链表是否有序，查找速度都慢，添加数据速度比数组快，不需要数据整体移动。
+ * <br>
  * ===========二叉排序树介绍==============
+ * <br>
  * 二叉排序树：BST: (Binary Sort(Search) Tree), 对于二叉排序树的任何一个非叶子节点，
  * 要求左子节点的值比当前节点的值小，右子节点的值比当前节点的值大。
+ * <br>
  * 特别说明：如果有相同的值，可以将该节点放在左子节点或右子节点
  */
 public class BinarySortTreeDemo {
@@ -17,7 +23,7 @@ public class BinarySortTreeDemo {
     public static void main(String[] args) {
         int[] arr = {7, 3, 10, 12, 5, 1, 9, 2};
         BinarySortTree binarySortTree = new BinarySortTree(new BinarySortTreeNode(arr[0]));
-        //循环的添加结点到二叉排序树
+        // 循环的添加结点到二叉排序树
         for (int i = 1; i < arr.length; i++) {
             binarySortTree.addNode(new BinarySortTreeNode(arr[i]));
         }

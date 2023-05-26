@@ -5,14 +5,18 @@ import java.util.List;
 
 /**
  * 双向链表
+ * <br>
  * 管理单向链表的缺点分析:
+ * <br>
  * 1) 单向链表，查找的方向只能是一个方向，而双向链表可以向前或者向后查找。
+ * <br>
  * 2) 单向链表不能自我删除，需要靠辅助节点 ，而双向链表，则可以自我删除，所以前面我们单链表删除
  * 时节点，总是找到 temp,temp 是待删除节点的前一个节点(认真体会).
+ * <br>
  * 3) 分析了双向链表如何完成遍历，添加，修改和删除的思路
  */
 public class DoubleLinkedListDemo {
-    //使用带 head 头的双向链表实现 –水浒英雄排行榜
+    // 使用带 head 头的双向链表实现 –水浒英雄排行榜
     public static void main(String[] args) {
         // 测试
         System.out.println("======双向链表的测试======");
@@ -71,7 +75,7 @@ class DoubleLinkedList {
         node.setPre(temp);
     }
 
-    //双向链表的第二种添加方式,按照编号顺序 ,按照单链表的顺序添加
+    // 双向链表的第二种添加方式,按照编号顺序 ,按照单链表的顺序添加
     public void addByNo(HeroNode2 node) {
         HeroNode2 temp = this.head;
         // 判断链表是否为空
@@ -136,7 +140,7 @@ class DoubleLinkedList {
         System.out.println(node.getNo() + "号英雄不存在，无法修改~");
     }
 
-    //获取指定编号的英雄
+    // 获取指定编号的英雄
     public HeroNode2 queryByNo(int no) {
         HeroNode2 temp = this.head;
         // 判断链表是否为空

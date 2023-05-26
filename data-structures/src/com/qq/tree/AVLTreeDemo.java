@@ -2,29 +2,36 @@ package com.qq.tree;
 
 /**
  * 给你一个数列{1,2,3,4,5,6}，要求创建一颗二叉排序树(BST), 并分析问题所在.
+ * <br>
  *  左边 BST 存在的问题分析:
+ * <br>
  * 1) 左子树全部为空，从形式上看，更像一个单链表. 2) 插入速度没有影响
+ * <br>
  * 3) 查询速度明显降低(因为需要依次比较), 不能发挥 BST的优势，因为每次还需要比较左子树，其查询速度比
  * 单链表还慢
+ * <br>
  * 4) 解决方案-平衡二叉树(AVL)
+ * <br>
  * ============平衡二叉树(AVL)==============
+ * <br>
  * 1) 平衡二叉树也叫平衡二叉搜索树（Self-balancing binary search tree）又被称为 AVL 树,
  * 可以保证查询效率较高。
+ * <br>
  * 2) 具有以下特点：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过 1，并且左右两个子树都是一棵
  * 平衡二叉树。平衡二叉树的常用实现方法有红黑树、AVL、替罪羊树、Treap、伸展树等。
  */
 public class AVLTreeDemo {
     public static void main(String[] args) {
-        //int[] arr = {4,3,6,5,7,8};
-        //int[] arr = { 10, 12, 8, 9, 7, 6 };
+        // int[] arr = {4,3,6,5,7,8};
+        // int[] arr = { 10, 12, 8, 9, 7, 6 };
         int[] arr = {10, 11, 7, 6, 8, 9};
-        //创建一个 AVLTree 对象
+        // 创建一个 AVLTree 对象
         AVLTree avlTree = new AVLTree(new AVLTreeNode(arr[0]));
-        //添加结点
+        // 添加结点
         for (int i = 1; i < arr.length; i++) {
             avlTree.addNode(new AVLTreeNode(arr[i]));
         }
-        //遍历
+        // 遍历
         System.out.println("中序遍历");
         avlTree.infixOrder();
         System.out.println("在平衡处理~~");

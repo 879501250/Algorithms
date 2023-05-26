@@ -6,17 +6,27 @@ import java.util.List;
 
 /**
  * 插值查找算法
+ * <br>
  * 注意：使用二分查找的前提是 该数组是有序的.
+ * <br>
  * 1) 插值查找原理介绍:
+ * <br>
  * 插值查找算法类似于二分查找，不同的是插值查找每次从自适应 mid 处开始查找。
+ * <br>
  * 2) 将折半查找中的求 mid 索引的公式 , low 表示左边索引 left, high 表示右边索引 right.
  * key 就是前面我们讲的 findVal
+ * <br>
  * 3) int mid = low + (high - low) * (key - arr[low]) / (arr[high] - arr[low]) ;
  * 对应前面的代码公式：
+ * <br>
  * int mid=left+(right – left)*(findVal – arr[left])/(arr[right] – arr[left])
+ * <br>
  * ============================
+ * <br>
  * 注意事项：
+ * <br>
  * 1) 对于数据量较大，关键字分布比较均匀的查找表来说，采用插值查找, 速度较快.
+ * <br>
  * 2) 关键字分布不均匀的情况下，该方法不一定比折半查找要好
  */
 public class InsertValueSearch {

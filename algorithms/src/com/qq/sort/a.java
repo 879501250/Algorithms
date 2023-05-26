@@ -2,14 +2,20 @@ package com.qq.sort;
 
 import com.qq.search.BinarySearch;
 import javafx.beans.binding.When;
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import org.junit.Test;
 import org.w3c.dom.ls.LSException;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.annotation.ElementType;
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.time.temporal.ValueRange;
 import java.util.*;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
 public class a {
@@ -26,7 +32,7 @@ public class a {
         //System.out.println(countOfAtoms("K4(ON(SO3)2)2"));
     }
     @Test
-    public void test(){
+    public void test() throws IOException, InterruptedException {
 //        int time = new Random().nextInt(1);
 //        time += 0;
 //        System.out.println("======================准备倒计时" + time + "秒==========================");
@@ -70,6 +76,38 @@ public class a {
 //        System.out.println(sorted);
 //        String str = "[89,100],[30,43],[92,100],[31,49],[59,76],[60,73],[31,49],[80,99],[48,60],[36,52],[67,82],[96,100],[22,35],[18,32],[9,24],[11,27],[94,100],[12,22],[61,74],[3,20],[14,28],[27,37],[5,20],[1,11],[96,100],[33,44],[90,100],[40,54],[23,35],[18,32],[78,89],[56,66],[83,93],[45,59],[40,59],[94,100],[99,100],[86,96],[43,61],[29,45],[21,36],[13,31],[17,30],[16,30],[80,94],[38,50],[15,30],[62,79],[25,39],[73,85],[39,56],[80,97],[42,57],[32,47],[59,78],[35,53],[56,74],[75,85],[39,54],[63,82]";
 //        tran(str,"three.book");
+//        listDirectory(new File("D:\\Java\\Tool\\apache-maven-3.6.3\\localRepository"));
+        File file = new File("D:\\Java\\Tool\\apache-maven-3.6.3\\localRepository");
+        listDirectory(file);
+    }
+
+    /**
+     * 遍历指定目录下（包括其子目录）的所有文件，并删除以 lastUpdated 结尾的文件
+     * @param dir 目录的位置 path
+     * @throws IOException
+     */
+    public static void listDirectory(File dir) throws IOException {
+        if (!dir.exists())
+            throw new IllegalArgumentException("目录：" + dir + "不存在.");
+        if (!dir.isDirectory()) {
+            throw new IllegalArgumentException(dir + " 不是目录。");
+        }
+        File[] files = dir.listFiles();
+        if (files != null && files.length > 0) {
+            for (File file : files) {
+                if (file.isDirectory())
+                    //递归
+                    listDirectory(file);
+                else{ // 删除以 lastUpdated 结尾的文件
+                    String fileName = file.getName();
+                    boolean isLastupdated = fileName.toLowerCase().endsWith("lastupdated");
+                    if (isLastupdated){
+                        boolean is_delete = file.delete();
+                        System.out.println("删除的文件名 => " + file.getName() + "  || 是否删除成功？ ==> " + is_delete);
+                    }
+                }
+            }
+        }
     }
 
     public void tran(String str,String method) {
