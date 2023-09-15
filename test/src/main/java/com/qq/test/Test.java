@@ -1,11 +1,13 @@
 package com.qq.test;
 
-import cn.hutool.core.date.*;
+import com.qq.utils.JarScanner;
 
-import java.io.File;
+import java.io.*;
+import java.lang.reflect.Array;
 import java.net.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.function.Function;
+import java.util.logging.Level;
 
 /**
  * 算法测试类 //TODO <br><br>
@@ -18,9 +20,11 @@ import java.util.function.Function;
  */
 public class Test {
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws Exception {
+        
     }
+
+
 }
 
 class TreeNode {
@@ -39,6 +43,28 @@ class TreeNode {
         this.val = val;
         this.left = left;
         this.right = right;
+    }
+
+    @Override
+    public int hashCode() {
+        return val;
+    }
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 }
 
